@@ -22,5 +22,6 @@ urlpatterns = [
     #Funcion path se le debe pasar por lo menos dos argumentos
     path("saludo/", saludar),
     path("saludar_con_fecha/", saludar_con_fecha),
+    path("saludo-html/", saludar_con_html),
     path("hola/<nombre>/", saludar_a_usuario),
 ]
