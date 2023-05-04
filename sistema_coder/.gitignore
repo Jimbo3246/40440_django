@@ -1,0 +1,14 @@
+#Python
+*.pyc
+build/
+dist/
+venv/
+.cache/
+.pytest cache/
+pygsheets.egg-into/
+.pytest cache/
+media/*
+
+#Other
+.DS_Store
+.coverage
