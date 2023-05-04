@@ -17,7 +17,10 @@ def saludar_a_usuario(request, nombre):
     pagina_html=HttpResponse(texto)
     return pagina_html    
 def saludar_con_html(request):
-    contexto={},
+    contexto={
+        "usuario":"Futuro"
+
+    } #No colocar coma aqui pues no te correra 
     http_responde=render(
 
         request=request,

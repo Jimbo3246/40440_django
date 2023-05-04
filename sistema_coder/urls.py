@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from sistema_coder.views import *
+from control_estudios.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     #Funcion path se le debe pasar por lo menos dos argumentos
@@ -24,4 +25,5 @@ urlpatterns = [
     path("saludar_con_fecha/", saludar_con_fecha),
     path("saludo-html/", saludar_con_html),
     path("hola/<nombre>/", saludar_a_usuario),
+    path("plataforma/estudiantes/", listar_estudiantes),
 ]

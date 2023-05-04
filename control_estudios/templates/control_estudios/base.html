@@ -27,8 +27,10 @@
                 <a class="btn btn-primary" href="#signup">INICIAR</a>
             </div>
         </nav>
-
-        <div>HOLA!!</div>
+        
+        {% block contenido %}
+        {% endblock contenido %}
+        <div>HOLA!! {{ usuario }}</div>
 
         <!-- Footer-->
         <footer class="footer bg-light">
