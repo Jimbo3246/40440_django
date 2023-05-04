@@ -18,3 +18,17 @@ def listar_estudiantes(request):
         context=contexto,
     )
     return http_responde
+def listar_cursos(request):
+    contexto={
+         "cursos":[
+             {"nombre":"Python","comision":"40440"},
+             {"nombre":"Data Science","comision":"50550"},
+             {"nombre":"Looker Studio with Google Analytics","comision":"60660"},
+             ]              
+    }
+    http_responde =render(
+        request=request,
+        template_name='control_estudios/lista_cursos.html',
+        context=contexto,
+    )
+    return http_responde
