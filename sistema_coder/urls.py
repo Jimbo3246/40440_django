@@ -19,6 +19,7 @@ from django.urls import path, include
 from sistema_coder.views import *
 from control_estudios.views import *
 urlpatterns = [
+    path("", inicio),
     path('admin/', admin.site.urls),
     path('estudios/',include("control_estudios.urls") ),
     #Funcion path se le debe pasar por lo menos dos argumentos
