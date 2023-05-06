@@ -23,13 +23,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="">Estudiantes</a>
-                <a class="navbar-brand" href="#!">Directores</a>
+                <a class="navbar-brand" href="https://www.google.com">Google</a>
+                <a class="navbar-brand" href="{% url 'inicio' %}">Incio</a>
+                <a class="navbar-brand" href="{% url 'lista_cursos' %}">Cursos</a>
+                <a class="navbar-brand" href="{% url 'lista_estudiantes' %}">Estudiantes</a>
                 <a class="btn btn-primary" href="#signup">INICIAR</a>
             </div>
         </nav>
 
-        <section style="padding:80px 50 px;">
+        <section style="padding:80px 50 px;"><!-- padding es como borde -->
             {% block contenido %}
             {% endblock contenido %}
         </section>
@@ -52,10 +54,10 @@
                                 <a href="#!"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="https://twiter.com/coderhouse"><i class="bi-twitter fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://www.instagram.com/espndeportes/?hl=es"><i class="bi-instagram fs-3"></i></a>
+                                <a href="https://www.instagram.com/jimmy.riv9708/?hl=es"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>
