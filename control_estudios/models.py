@@ -19,11 +19,13 @@ class Estudiante(models.Model):
 class Profesor(models.Model):
     nombre=models.CharField(max_length=256)
     apellido=models.CharField(max_length=256)
-    fecha_nacimiento=models.DateField()
+    fecha_nacimiento=models.DateField(blank=True)
     email=models.EmailField()
     dni=models.CharField(max_length=32)
-    profesion=models.CharField(max_length=128)
+    profesion=models.CharField(max_length=128, blank=True)
     bio=models.TextField()
+    def __str__(self):
+        return f"{self.nombre} - {self.apellido}"
 class Entregable(models.Model):
     nombre=models.CharField(max_length=256)
     fecha_entrega=models.DateTimeField()

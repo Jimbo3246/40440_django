@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
+#Aqui se puede cambiar el leguaje de la pagina administrativa
 LANGUAGE_CODE = 'es-PE'
 
 TIME_ZONE = 'UTC'
