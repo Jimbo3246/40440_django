@@ -22,4 +22,5 @@ urlpatterns = [
     path("estudiantes/", listar_estudiantes, name="lista_estudiantes"),
     path("cursos/", listar_cursos, name="lista_cursos"),
     path("crear-curso/",crear_curso,name="crear-curso"),
+    path("buscar-cursos/",buscar_cursos,name="buscar-cursos"),
 ]

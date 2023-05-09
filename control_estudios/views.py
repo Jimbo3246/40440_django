@@ -54,6 +54,7 @@ def crear_curso(request):
              curso.save()
         else:
              formulario = CursoFormulario(initial=request.POST)
+
              
  
         url_exitosa = reverse('lista_cursos') # estudios/cursos
@@ -62,10 +63,24 @@ def crear_curso(request):
            formulario = CursoFormulario()
     http_responde = render(
                         request=request,
-                        template_name='control_estudios/formulario_curso_a_mano.html',  
+                        template_name='control_estudios/formulario_curso.html',  
                         context={'formulario': formulario}
         )
     return http_responde
         
+def buscar_cursos(request):
+    if request.method == "POST":
+         data = request.POST
+         busqueda = data["busqueda"]
+         cursos = Curso.objects.filter(comision__contains=busqueda)#Busca cualquiera que inicie con los digitos que se mencione
+         contexto={
+              "cursos": cursos,
+         }
+    http_response=render(
+         request=request,
+         template_name='control_estudios/lista_cursos.html',
+         context=contexto,
+    )
+    return http_response
 
   
