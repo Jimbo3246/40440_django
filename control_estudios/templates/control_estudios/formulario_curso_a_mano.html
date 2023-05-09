@@ -1,0 +1,13 @@
+{% extends "control_estudios/base.html" %}
+
+{% block contenido %}
+<form action="{% url 'crear-curso' %}" method="post">
+  {% csrf_token %} <!-- Esto es un token unico que le brinda seguridad al formulario en contra de los hackers -->
+  <p>Nombre del curso</p> <!-- Esto es muy parcido a un label -->
+  <input type="text" name="nombre">
+  <p>Comision</p>
+  <input type="number" name="comision" step="1">
+  <!-- Este es boton que sirve para enviar a la BD la data que se ha escrito en el formulario -->
+  <input type="submit" value="Enviar">
+</form>
+{% endblock contenido %}
