@@ -80,7 +80,12 @@ def buscar_cursos(request):
          request=request,
          template_name='control_estudios/lista_cursos.html',
          context=contexto,
-    )
+         )
     return http_response
 
-  
+def eliminar_curso(request, id):    
+     curso=Curso.objects.get(id=id)     
+     if request.method == "POST":
+        curso.delete()
+        url_exitosa = reverse('lista_cursos')
+        return redirect(url_exitosa)
