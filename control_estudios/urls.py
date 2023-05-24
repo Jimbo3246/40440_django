@@ -19,10 +19,18 @@ from django.urls import path,include
 from control_estudios.views import *
 
 urlpatterns = [
+    #URLS de cursos
     path('editar-curso/<int:id>/',editar_curso,name='editar-curso'),
     path('eliminar-curso/<int:id>/', eliminar_curso , name='eliminar-curso'),
-    path("estudiantes/", listar_estudiantes, name="lista_estudiantes"),
     path("cursos/", listar_cursos, name="lista_cursos"),
     path("crear-curso/",crear_curso,name="crear-curso"),
     path("buscar-cursos/",buscar_cursos,name="buscar-cursos"),
+    #URLS de estudiantes
+
+    path("estudiantes/",EstudianteListView.as_view(), name="lista_estudiantes"),
+    path("estudiantes/<int:pk>/",EstudianteDetailView.as_view(), name="ver_estudiante"),
+    path("crear-estudiante/",EstudianteCreateView.as_view(), name="crear_estudiante"),
+    path("editar-estudiante/<int:pk>/",EstudianteUpdateView.as_view(), name="editar_estudiante"),
+    path("eliminar-estudiante/<int:pk>/",EstudianteDeleteView.as_view(), name="eliminar_estudiante"),
+
 ]

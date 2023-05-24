@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import *
+from django.views.generic import *#Estas librerias sirven para crear vistas basadas en clases
 from control_estudios.models import *
 from control_estudios.forms import *
 
 # Create your views here.   
-def listar_estudiantes(request):    
+#NO USADO
+"""def listar_estudiantes(request):    
     contexto={
-         "estudiantes":Estudiante.objects.all(),         
+        "estudiantes":Estudiante.objects.all(),         
     }
     http_responde =render(
         request=request,
@@ -14,6 +16,7 @@ def listar_estudiantes(request):
         context=contexto,
     )
     return http_responde
+"""
 def listar_cursos(request):
     contexto={
          "cursos":Curso.objects.all(),            
@@ -87,7 +90,7 @@ def eliminar_curso(request, id):
      curso=Curso.objects.get(id=id)     
      if request.method == "POST":
         curso.delete()
-        url_exitosa = reverse('lista_cursos')
+        url_exitosa = reverse('listar_cursos')
         return redirect(url_exitosa)
 def editar_curso(request, id):
     curso=Curso.objects.get(id=id)
@@ -112,3 +115,23 @@ def editar_curso(request, id):
          context={'formulario':formulario},
     )
 
+#Vistas de Estudiantes
+class EstudianteListView(ListView):
+     model=Estudiante
+     template_name='control_estudios/lista_estudiantes.html'
+
+class EstudianteCreateView(CreateView):
+     model =Estudiante
+     fields =('apellido','nombre','email','dni')
+     succes_url = reverse_lazy('lista_estudiantes') #Funcion especial que le indica que no lo resuelva ahorita, que resuelva cuando sea necesario
+class EstudianteDetailView(DetailView):
+     model = Estudiante
+     success_url = reverse_lazy('lista_estudiantes')
+
+class EstudianteDeleteView(DeleteView):
+     model = Estudiante
+     succes_url =reverse_lazy('lista_estudiantes')
+class EstudianteUpdateView(UpdateView):
+     model = Estudiante
+     fields=('apellido', 'nombre','email','dni')
+     succes_url = reverse_lazy('lista_estudiantes')
