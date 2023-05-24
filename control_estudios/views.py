@@ -123,15 +123,15 @@ class EstudianteListView(ListView):
 class EstudianteCreateView(CreateView):
      model =Estudiante
      fields =('apellido','nombre','email','dni')
-     succes_url = reverse_lazy('lista_estudiantes') #Funcion especial que le indica que no lo resuelva ahorita, que resuelva cuando sea necesario
+     success_url = reverse_lazy('lista_estudiantes') #Funcion especial que le indica que no lo resuelva ahorita, que resuelva cuando sea necesario
 class EstudianteDetailView(DetailView):
      model = Estudiante
      success_url = reverse_lazy('lista_estudiantes')
 
 class EstudianteDeleteView(DeleteView):
      model = Estudiante
-     succes_url =reverse_lazy('lista_estudiantes')
+     success_url =reverse_lazy('lista_estudiantes')
 class EstudianteUpdateView(UpdateView):
      model = Estudiante
      fields=('apellido', 'nombre','email','dni')
-     succes_url = reverse_lazy('lista_estudiantes')
+     success_url = reverse_lazy('lista_estudiantes')

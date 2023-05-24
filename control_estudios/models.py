@@ -10,12 +10,13 @@ class Curso(models.Model):
 class Estudiante(models.Model):
     nombre=models.CharField(max_length=256)
     apellido=models.CharField(max_length=256)
-    fecha_nacimiento=models.DateField()
+    fecha_nacimiento=models.DateField(blank=True, null=True)
     email=models.EmailField(blank=True)
     telefono=models.CharField(max_length=20, blank=True)#Buenas practicas para este tipo de datos
     dni=models.CharField(max_length=32)
     def __str__(self):
         return f"{self.nombre} - {self.apellido}"
+    
 class Profesor(models.Model):
     nombre=models.CharField(max_length=256)
     apellido=models.CharField(max_length=256)

@@ -2,9 +2,10 @@
 {% block contenido %}
 <section>
     <div>
-        <hl>Lista de estudiantes</hl>
-        {% block contenido_estudiantes %}
-        {% endblock contenido_estudiantes %}
+        <h1>Lista de estudiantes</h1>
+        <a href="{% url 'crear_estudiante' %}">Crear estudiante</a>
+        <br>
+
         <table class="table">
             <tbody>
                 <tr>
@@ -27,7 +28,9 @@
                         <a href="{% url 'editar_estudiante' alumno.id %}">Editar</a>
                     </td>
                     <td>
-                        <a href="{% url 'eliminar_estudiante' alumno.id %}">Eliminar</a>
+                        <a href="{% url 'eliminar_estudiante' alumno.id %}">
+                          <i class="bi bi-trash"></i>
+                        </a>
                     </td>
                     
                 </tr>
