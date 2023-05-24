@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('estudios/',include("control_estudios.urls") ),
     #Funcion path se le debe pasar por lo menos dos argumentos
+    path('perfiles/',include("perfiles.urls")),
     path("saludo/", saludar),
     path("saludar_con_fecha/", saludar_con_fecha),
     path("saludo-html/", saludar_con_html),

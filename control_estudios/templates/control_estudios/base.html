@@ -27,7 +27,9 @@
                 <a class="navbar-brand" href="{% url 'inicio' %}">Incio</a>
                 <a class="navbar-brand" href="{% url 'lista_cursos' %}">Cursos</a>
                 <a class="navbar-brand" href="{% url 'lista_estudiantes' %}">Estudiantes</a>
-                <a class="btn btn-primary" href="#signup">INICIAR</a>
+                <a class="btn btn-warning" href="{% url 'logout' %}">Cierre sesion</a>
+                <a class="btn btn-primary" href="{% url 'login' %}">Inicio de sesion</a>
+                <a class="btn btn-success" href="{% url 'registro' %}">Registro</a>
             </div>
         </nav>
 
