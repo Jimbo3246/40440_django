@@ -3,6 +3,8 @@ from django.urls import *
 from django.views.generic import *#Estas librerias sirven para crear vistas basadas en clases
 from control_estudios.models import *
 from control_estudios.forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.   
 #NO USADO
@@ -45,6 +47,7 @@ def crear_curso_version_1(request):
         context=contexto,
         )
     return http_responde
+@login_required
 def crear_curso(request):
    
     if request.method =="POST":
@@ -53,7 +56,8 @@ def crear_curso(request):
              data = formulario.cleaned_data #es un diccionario
              nombre = data["nombre"]
              comision = data["comision"]
-             curso = Curso(nombre=nombre, comision=comision)
+             creador=request.user
+             curso = Curso(nombre=nombre, comision=comision, creador=creador)
              curso.save()
         else:
              formulario = CursoFormulario(initial=request.POST)
@@ -90,7 +94,7 @@ def eliminar_curso(request, id):
      curso=Curso.objects.get(id=id)     
      if request.method == "POST":
         curso.delete()
-        url_exitosa = reverse('listar_cursos')
+        url_exitosa = reverse('lista_cursos')
         return redirect(url_exitosa)
 def editar_curso(request, id):
     curso=Curso.objects.get(id=id)
@@ -116,22 +120,22 @@ def editar_curso(request, id):
     )
 
 #Vistas de Estudiantes
-class EstudianteListView(ListView):
+class EstudianteListView(LoginRequiredMixin, ListView):
      model=Estudiante
      template_name='control_estudios/lista_estudiantes.html'
 
-class EstudianteCreateView(CreateView):
+class EstudianteCreateView(LoginRequiredMixin, CreateView):
      model =Estudiante
      fields =('apellido','nombre','email','dni')
      success_url = reverse_lazy('lista_estudiantes') #Funcion especial que le indica que no lo resuelva ahorita, que resuelva cuando sea necesario
-class EstudianteDetailView(DetailView):
+class EstudianteDetailView(LoginRequiredMixin, DetailView):
      model = Estudiante
      success_url = reverse_lazy('lista_estudiantes')
 
-class EstudianteDeleteView(DeleteView):
+class EstudianteDeleteView(LoginRequiredMixin, DeleteView):
      model = Estudiante
      success_url =reverse_lazy('lista_estudiantes')
-class EstudianteUpdateView(UpdateView):
+class EstudianteUpdateView(LoginRequiredMixin, UpdateView):
      model = Estudiante
      fields=('apellido', 'nombre','email','dni')
      success_url = reverse_lazy('lista_estudiantes')
