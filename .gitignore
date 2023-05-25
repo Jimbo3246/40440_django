@@ -7,7 +7,7 @@ venv/
 .pytest cache/
 pygsheets.egg-into/
 .pytest cache/
-media/*
+
 
 #Other
 .DS_Store

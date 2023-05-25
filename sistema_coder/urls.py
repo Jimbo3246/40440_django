@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from sistema_coder.views import *
 from control_estudios.views import *
+from django.conf import *
+from django.conf.urls.static import *
 urlpatterns = [
     path("", inicio, name="inicio"),
     path('admin/', admin.site.urls),
@@ -28,3 +30,4 @@ urlpatterns = [
     path("saludar_con_fecha/", saludar_con_fecha),
     path("saludo-html/", saludar_con_html),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

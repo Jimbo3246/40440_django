@@ -12,6 +12,7 @@ from django.contrib.auth import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
 from .forms import *
+from perfiles.models import *
 
 def registro(request):
     if request.method=="POST":
@@ -62,3 +63,20 @@ class MiPerfilUpdateView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):#El valor por defecto es None 
 
         return self.request.user
+def agregar_avatar(request):
+    if request.method == "POST":
+        formulario = AvatarFormulario(request.POST, request.FILES)
+
+        if formulario.is_valid():
+            avatar= formulario.save()
+            avatar.user= request.user
+            avatar.save()
+            url_exitosa = reverse('inicio')
+            return redirect(url_exitosa)
+    else:
+        formulario = AvatarFormulario()
+    return render(
+        request=request,
+        template_name="perfiles/formulario_avatar.html",
+        context={'form':formulario},
+    )

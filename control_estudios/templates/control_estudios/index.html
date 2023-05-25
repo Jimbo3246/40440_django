@@ -1,5 +1,6 @@
 {% extends "control_estudios/base.html" %}
 {% block contenido %}
 <h1>Bienvenidos a Coder {{user.first_name}} </h1>
+<img src="{{ user.avatar.imagen.url }}" />
 
 {% endblock contenido %}
